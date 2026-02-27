@@ -1,4 +1,3 @@
-/* Final style adjustments to force cache refresh */
 body, html {
     margin: 0;
     padding: 0;
@@ -101,11 +100,30 @@ textarea {
 
 .birth-group {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
     gap: 10px;
 }
 
-.birth-group input, .birth-group select {
+.birth-time-group {
+    display: grid;
+    grid-template-columns: 1fr 1fr auto;
+    gap: 10px;
+    align-items: center;
+}
+
+.unknown-time {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding-top: 25px; /* Align with input boxes */
+}
+
+.unknown-time input {
+    width: auto;
+}
+
+.birth-group input, .birth-group select, .birth-time-group select {
     text-align: center;
 }
 
@@ -136,8 +154,8 @@ textarea {
 /* Suggestion Section */
 .suggestion-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 20px;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 25px;
 }
 
 .suggestion-card {
