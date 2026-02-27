@@ -22,13 +22,11 @@ window.addEventListener("DOMContentLoaded", function() {
             hourSelect.disabled = isDisabled;
             minuteSelect.disabled = isDisabled;
             if (isDisabled) {
-                // When "unknown" is checked, clear values and make not required
                 hourSelect.value = "";
                 minuteSelect.value = "";
                 hourSelect.required = false;
                 minuteSelect.required = false;
             } else {
-                // When unchecked, make required again
                 hourSelect.required = true;
                 minuteSelect.required = true;
             }
@@ -37,7 +35,9 @@ window.addEventListener("DOMContentLoaded", function() {
 
     // Formspree form submission logic
     var form = document.getElementById("saju-form");
-    var status = document.getElementById("form-status");
+    var paymentInstructions = document.getElementById("payment-instructions");
+    var formContainer = document.getElementById("form-container");
+
 
     async function handleSubmit(event) {
         event.preventDefault();
@@ -50,30 +50,20 @@ window.addEventListener("DOMContentLoaded", function() {
             }
         }).then(response => {
             if (response.ok) {
-                status.innerHTML = "신청이 성공적으로 접수되었습니다. 감사합니다.";
-                status.style.color = "green";
+                // On success, redirect to KakaoTalk open chat
+                window.location.href = "https://open.kakao.com/o/sgbQDnii";
                 form.reset();
-                // After form reset, also reset the state of the time selectors
-                if (unknownTimeCheckbox && hourSelect && minuteSelect) {
-                    hourSelect.disabled = false;
-                    minuteSelect.disabled = false;
-                    hourSelect.required = true;
-                    minuteSelect.required = true;
-                    unknownTimeCheckbox.checked = false;
-                }
             } else {
                 response.json().then(data => {
                     if (Object.hasOwn(data, 'errors')) {
-                        status.innerHTML = data["errors"].map(error => error["message"]).join(", ");
+                        alert("입력 내용에 오류가 있습니다: " + data["errors"].map(error => error["message"]).join(", "));
                     } else {
-                        status.innerHTML = "오류가 발생했습니다. 다시 시도해주세요.";
-                        status.style.color = "red";
+                        alert("오류가 발생했습니다. 다시 시도해주세요.");
                     }
                 })
             }
         }).catch(error => {
-            status.innerHTML = "오류가 발생했습니다. 다시 시도해주세요.";
-            status.style.color = "red";
+            alert("오류가 발생했습니다. 다시 시도해주세요.");
         });
     }
     form.addEventListener("submit", handleSubmit)

@@ -1,3 +1,4 @@
+/* Append new styles for Pricing and Kakao Button */
 body, html {
     margin: 0;
     padding: 0;
@@ -67,6 +68,34 @@ h2 {
     line-height: 1.8;
     text-align: center;
 }
+
+/* Pricing Section */
+.pricing-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    text-align: center;
+}
+
+.price-card {
+    background: rgba(255, 255, 255, 0.7);
+    padding: 20px;
+    border-radius: 10px;
+    border: 1px solid #ddd;
+}
+
+.price-card h3 {
+    margin-top: 0;
+    color: #4A2E2C;
+}
+
+.price-card .price {
+    font-size: 1.8em;
+    font-weight: bold;
+    color: #8B4513;
+    margin: 10px 0;
+}
+
 
 #form-container {
     background: rgba(255, 255, 255, 0.7);
@@ -150,6 +179,38 @@ textarea {
     margin-top: 20px;
     font-weight: bold;
 }
+
+/* Payment Instructions & Kakao Button */
+#payment-instructions {
+    text-align: center;
+    padding: 20px;
+    background-color: #fff8e1;
+    border: 1px solid #ffecb3;
+    border-radius: 10px;
+}
+
+.kakao-btn {
+    display: inline-block;
+    background-color: #FEE500;
+    color: #000000;
+    font-weight: bold;
+    padding: 15px 30px;
+    border-radius: 12px;
+    text-decoration: none;
+    margin-top: 15px;
+    transition: background-color 0.3s ease;
+}
+
+.kakao-btn:hover {
+    background-color: #F8D800;
+}
+
+.small-text {
+    font-size: 0.9em;
+    color: #666;
+    margin-top: 15px;
+}
+
 
 /* Suggestion Section */
 .suggestion-grid {
