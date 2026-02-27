@@ -16,27 +16,13 @@
         <section id="intro">
             <h2>인생의 중요한 길목에 서 계신가요?</h2>
             <p>타고난 기운을 이해하고 미래를 준비하는 것은 현명한 자의 자세입니다.<br>저희 천명사주는 정통 명리학에 기반하여, 당신의 사주팔자를 깊이 있게 분석하고 인생의 나침반을 제시해 드립니다.</p>
-        </section> <!-- end of form-section -->
+        </section>
 
-<section id="pricing-section"> 
-    <h2>상담 비용 안내</h2> 
-    <div class="pricing-grid"> 
-        <div class="price-card"> 
-            <h3>기본 사주 상담</h3> 
-            <p class="price">15,000원</p> 
-            <p>당신의 사주팔자를 심도 있게 분석하여 전반적인 운의 흐름을 알려드립니다.</p> 
-        </div> 
-        <div class="price-card"> 
-            <h3>궁합 추가 상담</h3> 
-            <p class="price">25,000원</p> 
-            <p>기본 상담에 더하여, 특정 인물(연인, 동업자 등)과의 관계를 심층적으로 분석합니다.</p> 
-        </div> 
-    </div> 
-</section> <!-- end of form-section -->
         <section id="form-section">
             <h2>사주 상담 신청</h2>
             <div id="form-container">
                 <form id="saju-form" action="https://formspree.io/f/xpqjbvny" method="POST">
+                    <!-- Form groups from before -->
                     <div class="form-group">
                         <label for="name">이름</label>
                         <input type="text" id="name" name="이름" required>
@@ -70,11 +56,9 @@
                         <div class="birth-time-group">
                             <select id="birth-hour" name="태어난 시간 (시)" required>
                                 <option value="">시</option>
-                                <!-- JS will populate this -->
                             </select>
                             <select id="birth-minute" name="태어난 시간 (분)" required>
                                 <option value="">분</option>
-                                <!-- JS will populate this -->
                             </select>
                             <div class="unknown-time">
                                 <input type="checkbox" id="time-unknown" name="시간모름">
@@ -91,15 +75,25 @@
                         <textarea id="question" name="상담 내용" rows="5" required></textarea>
                     </div>
                     <button type="submit" class="submit-btn">상담 신청하기</button>
+                    <p class="form-notice">신청 후 결제가 완료되어야 정상적으로 상담이 진행됩니다.<br>결제 문의는 신청 시 사용한 이름과 함께 카카오톡으로 부탁드립니다.</p>
                 </form>
-                <p id="form-status"></p>
             </div>
-        </section> <!-- end of form-section -->
+            <!-- This section will be shown after successful submission -->
+            <div id="payment-instructions" style="display: none;">
+                <h2>신청서가 성공적으로 접수되었습니다</h2>
+                <p>상담 비용을 아래의 카카오톡으로 문의 및 결제해주시면, 확인 후 24시간 내에 상담 결과를 보내드립니다.</p>
+                <a href="https://open.kakao.com/o/sgbQDnii" target="_blank" class="kakao-btn">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="vertical-align: middle; margin-right: 8px;"><path d="M12 2C6.477 2 2 5.79 2 10.286C2 12.831 3.553 15.113 6.134 16.59L5.014 21.233L9.695 18.2C10.443 18.324 11.213 18.391 12 18.391C17.523 18.391 22 14.781 22 10.286C22 5.79 17.523 2 12 2Z" fill="#191919"></path></svg>
+                    오픈카톡으로 문의 및 결제하기
+                </a>
+                <p class="small-text">오픈카톡 링크가 작동하지 않을 경우, 카카오톡 ID: ssgkgk 로 친구 추가 후 문의해주세요.</p>
+            </div>
+        </section>
 
         <section id="suggestion-section">
             <h2>아직 궁금한 점이 없으신가요?<br>이런 것들도 알 수 있습니다!</h2>
             <div class="suggestion-grid">
-                <div class="suggestion-card">
+                 <div class="suggestion-card">
                     <img src="images/content/2026.jpg" alt="2026년 신년운세">
                     <h3>2026년 나의 운세는?</h3>
                     <p>다가오는 2026년, 당신의 대운은 어떻게 흐를까요? 사업, 연애, 건강 등 전반적인 흐름을 미리 준비하세요.</p>
@@ -135,8 +129,23 @@
                     <p>나의 연애운은 언제 가장 빛날까요? 혹은 현재 연인과의 궁합이 궁금하신가요? 인연의 흐름을 섬세하게 분석해 드립니다.</p>
                 </div>
             </div>
-        </section> <!-- end of form-section -->
+        </section>
 
+        <section id="pricing-section">
+            <h2>상담 비용 안내</h2>
+            <div class="pricing-grid">
+                <div class="price-card">
+                    <h3>기본 사주 상담</h3>
+                    <p class="price">15,000원</p>
+                    <p>당신의 사주팔자를 심도 있게 분석하여 전반적인 운의 흐름을 알려드립니다.</p>
+                </div>
+                <div class="price-card">
+                    <h3>궁합 추가 상담</h3>
+                    <p class="price">25,000원</p>
+                    <p>기본 상담에 더하여, 특정 인물(연인, 동업자 등)과의 관계를 심층적으로 분석합니다.</p>
+                </div>
+            </div>
+        </section>
     </div>
     <script src="script.js"></script>
 </body>

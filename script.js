@@ -1,3 +1,4 @@
+// saju-website/script.js - Final Version
 window.addEventListener("DOMContentLoaded", function() {
     // Populate time dropdowns
     function populateTime(selectElement, max, label) {
@@ -35,13 +36,17 @@ window.addEventListener("DOMContentLoaded", function() {
 
     // Formspree form submission logic
     var form = document.getElementById("saju-form");
-    var paymentInstructions = document.getElementById("payment-instructions");
     var formContainer = document.getElementById("form-container");
-
-
+    var paymentInstructions = document.getElementById("payment-instructions");
+    
     async function handleSubmit(event) {
         event.preventDefault();
         var data = new FormData(event.target);
+        // Show a temporary loading message
+        var submitBtn = form.querySelector('.submit-btn');
+        submitBtn.disabled = true;
+        submitBtn.textContent = '전송 중...';
+
         fetch(event.target.action, {
             method: form.method,
             body: data,
@@ -50,9 +55,8 @@ window.addEventListener("DOMContentLoaded", function() {
             }
         }).then(response => {
             if (response.ok) {
-                // On success, redirect to KakaoTalk open chat
-                window.location.href = "https://open.kakao.com/o/sgbQDnii";
-                form.reset();
+                formContainer.style.display = 'none'; // Hide the form
+                paymentInstructions.style.display = 'block'; // Show payment instructions
             } else {
                 response.json().then(data => {
                     if (Object.hasOwn(data, 'errors')) {
@@ -60,10 +64,14 @@ window.addEventListener("DOMContentLoaded", function() {
                     } else {
                         alert("오류가 발생했습니다. 다시 시도해주세요.");
                     }
+                    submitBtn.disabled = false;
+                    submitBtn.textContent = '상담 신청하기';
                 })
             }
         }).catch(error => {
             alert("오류가 발생했습니다. 다시 시도해주세요.");
+            submitBtn.disabled = false;
+            submitBtn.textContent = '상담 신청하기';
         });
     }
     form.addEventListener("submit", handleSubmit)

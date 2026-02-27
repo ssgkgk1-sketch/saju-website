@@ -1,4 +1,4 @@
-/* Append new styles for Pricing and Kakao Button */
+/* saju-website/style.css - Final Version */
 body, html {
     margin: 0;
     padding: 0;
@@ -26,7 +26,7 @@ body::before {
     max-width: 800px;
     margin: 40px auto;
     padding: 30px;
-    background-color: rgba(255, 255, 255, 0.88);
+    background-color: rgba(255, 255, 255, 0.9);
     border-radius: 15px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
 }
@@ -68,34 +68,6 @@ h2 {
     line-height: 1.8;
     text-align: center;
 }
-
-/* Pricing Section */
-.pricing-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 20px;
-    text-align: center;
-}
-
-.price-card {
-    background: rgba(255, 255, 255, 0.7);
-    padding: 20px;
-    border-radius: 10px;
-    border: 1px solid #ddd;
-}
-
-.price-card h3 {
-    margin-top: 0;
-    color: #4A2E2C;
-}
-
-.price-card .price {
-    font-size: 1.8em;
-    font-weight: bold;
-    color: #8B4513;
-    margin: 10px 0;
-}
-
 
 #form-container {
     background: rgba(255, 255, 255, 0.7);
@@ -145,7 +117,7 @@ textarea {
     align-items: center;
     justify-content: center;
     gap: 8px;
-    padding-top: 25px; /* Align with input boxes */
+    padding-top: 25px;
 }
 
 .unknown-time input {
@@ -174,17 +146,19 @@ textarea {
     background-color: #A0522D;
 }
 
-#form-status {
+.form-notice {
+    font-size: 0.9em;
     text-align: center;
-    margin-top: 20px;
-    font-weight: bold;
+    color: #666;
+    margin-top: 15px;
+    line-height: 1.5;
 }
 
 /* Payment Instructions & Kakao Button */
 #payment-instructions {
     text-align: center;
-    padding: 20px;
-    background-color: #fff8e1;
+    padding: 30px;
+    background-color: rgba(255, 252, 234, 0.9);
     border: 1px solid #ffecb3;
     border-radius: 10px;
 }
@@ -192,13 +166,14 @@ textarea {
 .kakao-btn {
     display: inline-block;
     background-color: #FEE500;
-    color: #000000;
+    color: #191919;
     font-weight: bold;
     padding: 15px 30px;
     border-radius: 12px;
     text-decoration: none;
     margin-top: 15px;
     transition: background-color 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
 }
 
 .kakao-btn:hover {
@@ -250,4 +225,38 @@ textarea {
     line-height: 1.6;
     padding: 0 15px 15px 15px;
     color: #555;
+}
+
+/* Pricing Section */
+#pricing-section {
+    background-color: rgba(255, 255, 255, 0.7);
+    padding: 30px;
+    border-radius: 10px;
+}
+
+.pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    text-align: center;
+}
+
+.price-card {
+    background: #fff;
+    padding: 25px;
+    border-radius: 10px;
+    border: 1px solid #ddd;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+}
+
+.price-card h3 {
+    margin-top: 0;
+    color: #4A2E2C;
+}
+
+.price-card .price {
+    font-size: 1.8em;
+    font-weight: bold;
+    color: #8B4513;
+    margin: 10px 0;
 }
