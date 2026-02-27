@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>천명사주 - 당신의 길을 비추는 지혜</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="main-container">
+        <header>
+            <h1>천명(天命)사주</h1>
+            <p class="subtitle">하늘의 명을 읽어 당신의 길을 비추는 지혜</p>
+        </header>
+
+        <section id="intro">
+            <h2>인생의 중요한 길목에 서 계신가요?</h2>
+            <p>타고난 기운을 이해하고 미래를 준비하는 것은 현명한 자의 자세입니다.<br>저희 천명사주는 정통 명리학에 기반하여, 당신의 사주팔자를 깊이 있게 분석하고 인생의 나침반을 제시해 드립니다.</p>
+        </section>
+
+        <section id="form-section">
+            <h2>사주 상담 신청</h2>
+            <div id="form-container">
+                <form id="saju-form" action="https://formspree.io/f/xpqjbvny" method="POST">
+                    <div class="form-group">
+                        <label for="name">이름</label>
+                        <input type="text" id="name" name="이름" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="gender">성별</label>
+                        <select id="gender" name="성별" required>
+                            <option value="">선택</option>
+                            <option value="남성">남성</option>
+                            <option value="여성">여성</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>생년월일 및 태어난 시간</label>
+                        <div class="birth-group">
+                            <input type="number" name="생년" placeholder="예) 1990" required>
+                            <input type="number" name="생월" placeholder="예) 5" required>
+                            <input type="number" name="생일" placeholder="예) 15" required>
+                            <input type="number" name="태어난 시간" placeholder="예) 14 (24시 기준)" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="contact">연락처 (이메일 또는 전화번호)</label>
+                        <input type="text" id="contact" name="연락처" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="question">상담받고 싶은 내용 (구체적으로)</label>
+                        <textarea id="question" name="상담 내용" rows="5" required></textarea>
+                    </div>
+                    <button type="submit" class="submit-btn">상담 신청하기</button>
+                </form>
+                <p id="form-status"></p>
+            </div>
+        </section>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
