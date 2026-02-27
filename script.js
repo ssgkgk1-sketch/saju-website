@@ -1,4 +1,18 @@
 window.addEventListener("DOMContentLoaded", function() {
+    // Populate time dropdowns
+    function populateTime(selectElement, max, label) {
+        for (let i = 0; i < max; i++) {
+            let option = document.createElement("option");
+            option.value = i;
+            option.textContent = i + label;
+            selectElement.appendChild(option);
+        }
+    }
+    const hourSelect = document.querySelector('select[name="태어난 시간 (시)"]');
+    const minuteSelect = document.querySelector('select[name="태어난 시간 (분)"]');
+    if(hourSelect) populateTime(hourSelect, 24, '시');
+    if(minuteSelect) populateTime(minuteSelect, 60, '분');
+
     // Formspree form submission logic
     var form = document.getElementById("saju-form");
     var status = document.getElementById("form-status");
