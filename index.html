@@ -37,10 +37,14 @@
                     <div class="form-group">
                         <label>생년월일 및 태어난 시간</label>
                         <div class="birth-group">
+                            <select name="달력종류" required>
+                                <option value="양력">양력</option>
+                                <option value="음력">음력</option>
+                            </select>
                             <input type="number" name="생년" placeholder="예) 1990" required>
                             <input type="number" name="생월" placeholder="예) 5" required>
                             <input type="number" name="생일" placeholder="예) 15" required>
-                            <input type="number" name="태어난 시간" placeholder="예) 14 (24시 기준)" required>
+                            <input type="number" name="태어난 시간" placeholder="예) 14 (24시)" required>
                         </div>
                     </div>
                     <div class="form-group">
@@ -56,6 +60,38 @@
                 <p id="form-status"></p>
             </div>
         </section>
+
+        <section id="suggestion-section">
+            <h2>아직 궁금한 점이 없으신가요?<br>이런 것들도 알 수 있습니다!</h2>
+            <div class="suggestion-grid">
+                <div class="suggestion-card">
+                    <img src="images/content/2026.jpg" alt="2026년 신년운세">
+                    <h3>2026년 나의 운세는?</h3>
+                    <p>다가오는 2026년, 당신의 대운은 어떻게 흐를까요? 사업, 연애, 건강 등 전반적인 흐름을 미리 준비하세요.</p>
+                </div>
+                <div class="suggestion-card">
+                    <img src="images/content/interior.jpg" alt="재물운 인테리어">
+                    <h3>재물운을 부르는 집</h3>
+                    <p>당신의 사주에 맞는 가구 배치나, 집에 두면 좋은 물건은 무엇일까요? 재물운을 끌어올리는 인테리어 팁을 알아보세요.</p>
+                </div>
+                <div class="suggestion-card">
+                    <img src="images/content/action_up.jpg" alt="운을 상승시키는 행동">
+                    <h3>운을 상승시키는 도전</h3>
+                    <p>당신의 기운을 북돋아 줄 과감한 도전은 무엇일까요? 일상 속 작은 용기로 더 큰 행운을 맞이할 수 있습니다.</p>
+                </div>
+                <div class="suggestion-card">
+                    <img src="images/content/action_down.jpg" alt="운을 하락시키는 행동">
+                    <h3>운을 가로막는 정체</h3>
+                    <p>나도 모르게 운의 흐름을 막는 행동이 있을 수 있습니다. 당신의 사주에서 피해야 할 정체된 행동을 알아보세요.</p>
+                </div>
+                 <div class="suggestion-card">
+                    <img src="images/content/travel.jpg" alt="사주에 맞는 여행지">
+                    <h3>운을 채워주는 여행지</h3>
+                    <p>당신의 사주에 부족한 오행의 기운을 채워줄 수 있는 최고의 여행지는 어디일까요? 몸과 마음의 재충전을 위한 여행을 떠나보세요.</p>
+                </div>
+            </div>
+        </section>
+
     </div>
     <script src="script.js"></script>
 </body>
