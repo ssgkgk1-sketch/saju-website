@@ -3,27 +3,37 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>구름 사주 - 당신의 길을 비추는 지혜</title>
+    <title>구름 사주 - 당신의 운명을 여행합니다</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <!-- Animated Background -->
+    <div id="particles-js"></div>
+    
+    <!-- Floating Clouds -->
+    <div class="cloud cloud1"></div>
+    <div class="cloud cloud2"></div>
+    <div class="cloud cloud3"></div>
+
     <div class="main-container">
-        <header>
+        <header class="scroll-animation">
             <img src="images/logo.jpg" alt="구름 사주 로고" class="header-logo">
             <h1>구름 사주</h1>
             <p class="subtitle">구름처럼 자유롭게, 당신의 운명을 함께 여행합니다</p>
         </header>
 
-        <section id="intro">
+        <section id="intro" class="scroll-animation">
             <h2>인생의 중요한 길목에 서 계신가요?</h2>
-            <p>타고난 기운을 이해하고 미래를 준비하는 것은 현명한 자의 자세입니다.<br>저희 천명사주는 정통 명리학에 기반하여, 당신의 사주팔자를 깊이 있게 분석하고 인생의 나침반을 제시해 드립니다.</p>
+            <p>타고난 기운을 이해하고 미래를 준비하는 것은 현명한 자의 자세입니다.<br>저희 구름 사주는 정통 명리학에 기반하여, 당신의 사주팔자를 깊이 있게 분석하고 인생의 나침반을 제시해 드립니다.</p>
         </section>
 
-        <section id="form-section">
+        <section id="form-section" class="scroll-animation">
             <h2>사주 상담 신청</h2>
             <div id="form-container">
                 <form id="saju-form" action="https://formspree.io/f/xpqjbvny" method="POST">
-                    <!-- Form groups from before -->
                     <div class="form-group">
                         <label for="name">이름</label>
                         <input type="text" id="name" name="이름" required>
@@ -79,52 +89,51 @@
                     <p class="form-notice">신청 후 결제가 완료되어야 정상적으로 상담이 진행됩니다.<br>결제 문의는 신청 시 사용한 이름과 함께 카카오톡으로 부탁드립니다.</p>
                 </form>
             </div>
-            <!-- This section will be shown after successful submission -->
             <div id="payment-instructions" style="display: none;">
                 <h2>신청서가 성공적으로 접수되었습니다</h2>
                 <p>상담 비용을 아래의 카카오톡으로 문의 및 결제해주시면, 확인 후 24시간 내에 상담 결과를 보내드립니다.</p>
                 <a href="https://open.kakao.com/o/sgbQDnii" target="_blank" class="kakao-btn">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="vertical-align: middle; margin-right: 8px;"><path d="M12 2C6.477 2 2 5.79 2 10.286C2 12.831 3.553 15.113 6.134 16.59L5.014 21.233L9.695 18.2C10.443 18.324 11.213 18.391 12 18.391C17.523 18.391 22 14.781 22 10.286C22 5.79 17.523 2 12 2Z" fill="#191919"></path></svg>
+                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="vertical-align: middle; margin-right: 8px;"><path d="M12 2C6.477 2 2 5.79 2 10.286C2 12.831 3.553 15.113 6.134 16.59L5.014 21.233L9.695 18.2C10.443 18.324 11.213 18.391 12 18.391C17.523 18.391 22 14.781 22 10.286C22 5.79 17.523 2 12 2Z" fill="#191919"></path></svg>
                     오픈카톡으로 문의 및 결제하기
                 </a>
                 <p class="small-text">오픈카톡 링크가 작동하지 않을 경우, 카카오톡 ID: ssgkgk 로 친구 추가 후 문의해주세요.</p>
             </div>
         </section>
 
-        <section id="suggestion-section">
+        <section id="suggestion-section" class="scroll-animation">
             <h2>아직 궁금한 점이 없으신가요?<br>이런 것들도 알 수 있습니다!</h2>
             <div class="suggestion-grid">
-                 <div class="suggestion-card">
+                 <div class="suggestion-card scroll-animation">
                     <img src="images/content/2026.jpg" alt="2026년 신년운세">
                     <h3>2026년 나의 운세는?</h3>
                     <p>다가오는 2026년, 당신의 대운은 어떻게 흐를까요? 사업, 연애, 건강 등 전반적인 흐름을 미리 준비하세요.</p>
                 </div>
-                <div class="suggestion-card">
+                <div class="suggestion-card scroll-animation">
                     <img src="images/content/interior.jpg" alt="재물운 인테리어">
                     <h3>재물운을 부르는 집</h3>
                     <p>당신의 사주에 맞는 가구 배치나, 집에 두면 좋은 물건은 무엇일까요? 재물운을 끌어올리는 인테리어 팁을 알아보세요.</p>
                 </div>
-                <div class="suggestion-card">
+                <div class="suggestion-card scroll-animation">
                     <img src="images/content/action_up.jpg" alt="운을 상승시키는 도전">
                     <h3>운을 상승시키는 도전</h3>
                     <p>당신의 기운을 북돋아 줄 과감한 도전은 무엇일까요? 일상 속 작은 용기로 더 큰 행운을 맞이할 수 있습니다.</p>
                 </div>
-                <div class="suggestion-card">
+                <div class="suggestion-card scroll-animation">
                     <img src="images/content/action_down.jpg" alt="운을 가로막는 정체">
                     <h3>운을 가로막는 정체</h3>
                     <p>나도 모르게 운의 흐름을 막는 행동이 있을 수 있습니다. 당신의 사주에서 피해야 할 정체된 행동을 알아보세요.</p>
                 </div>
-                 <div class="suggestion-card">
+                 <div class="suggestion-card scroll-animation">
                     <img src="images/content/travel.jpg" alt="사주에 맞는 여행지">
                     <h3>운을 채워주는 여행지</h3>
                     <p>당신의 사주에 부족한 오행의 기운을 채워줄 수 있는 최고의 여행지는 어디일까요? 몸과 마음의 재충전을 위한 여행을 떠나보세요.</p>
                 </div>
-                <div class="suggestion-card">
+                <div class="suggestion-card scroll-animation">
                     <img src="images/content/wealth.jpg" alt="재물운 분석">
                     <h3>나의 재물운은?</h3>
                     <p>나는 언제 돈을 벌고, 언제 돈을 지켜야 할까요? 당신의 사주에 담긴 재물운의 흐름을 분석하여 부의 지도를 그려드립니다.</p>
                 </div>
-                 <div class="suggestion-card">
+                 <div class="suggestion-card scroll-animation">
                     <img src="images/content/love.jpg" alt="연애 및 궁합운">
                     <h3>연애와 궁합</h3>
                     <p>나의 연애운은 언제 가장 빛날까요? 혹은 현재 연인과의 궁합이 궁금하신가요? 인연의 흐름을 섬세하게 분석해 드립니다.</p>
@@ -132,15 +141,15 @@
             </div>
         </section>
 
-        <section id="pricing-section">
+        <section id="pricing-section" class="scroll-animation">
             <h2>상담 비용 안내</h2>
             <div class="pricing-grid">
-                <div class="price-card">
+                <div class="price-card scroll-animation">
                     <h3>기본 사주 상담</h3>
                     <p class="price">15,000원</p>
                     <p>당신의 사주팔자를 심도 있게 분석하여 전반적인 운의 흐름을 알려드립니다.</p>
                 </div>
-                <div class="price-card">
+                <div class="price-card scroll-animation">
                     <h3>궁합 추가 상담</h3>
                     <p class="price">25,000원</p>
                     <p>기본 상담에 더하여, 특정 인물(연인, 동업자 등)과의 관계를 심층적으로 분석합니다.</p>
@@ -148,6 +157,9 @@
             </div>
         </section>
     </div>
+
+    <!-- Scripts for animations -->
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
     <script src="script.js"></script>
 </body>
 </html>

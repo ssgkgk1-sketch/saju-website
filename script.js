@@ -1,6 +1,43 @@
-// saju-website/script.js - Final Version
+// saju-website/script.js - Dream Version
 window.addEventListener("DOMContentLoaded", function() {
-    // Populate time dropdowns
+    
+    // --- Particles.js Starfield Background ---
+    particlesJS('particles-js', {
+      "particles": {
+        "number": { "value": 160, "density": { "enable": true, "value_area": 800 } },
+        "color": { "value": "#ffffff" },
+        "shape": { "type": "circle", "stroke": { "width": 0, "color": "#000000" }, "polygon": { "nb_sides": 5 }, },
+        "opacity": { "value": 1, "random": true, "anim": { "enable": true, "speed": 1, "opacity_min": 0, "sync": false } },
+        "size": { "value": 2, "random": true, "anim": { "enable": false, "speed": 4, "size_min": 0.3, "sync": false } },
+        "line_linked": { "enable": false },
+        "move": { "enable": true, "speed": 0.3, "direction": "none", "random": true, "straight": false, "out_mode": "out", "bounce": false, "attract": { "enable": false, "rotateX": 600, "rotateY": 600 } }
+      },
+      "interactivity": {
+        "detect_on": "canvas",
+        "events": { "onhover": { "enable": false }, "onclick": { "enable": false }, "resize": true },
+      },
+      "retina_detect": true
+    });
+
+    // --- Scroll-in Animations ---
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+            }
+        });
+    }, { threshold: 0.1 });
+
+    const elementsToAnimate = document.querySelectorAll('.scroll-animation');
+    elementsToAnimate.forEach((el, index) => {
+        // Apply staggered delay for cards
+        if (el.classList.contains('suggestion-card') || el.classList.contains('price-card')) {
+            el.style.setProperty('--delay', `${(index % 3) * 0.15}s`);
+        }
+        observer.observe(el);
+    });
+
+    // --- Populate Time Dropdowns ---
     function populateTime(selectElement, max, label) {
         for (let i = 0; i < max; i++) {
             let option = document.createElement("option");
@@ -15,7 +52,7 @@ window.addEventListener("DOMContentLoaded", function() {
     if(hourSelect) populateTime(hourSelect, 24, '시');
     if(minuteSelect) populateTime(minuteSelect, 60, '분');
 
-    // Handle "Unknown time" checkbox
+    // --- Handle "Unknown time" checkbox ---
     const unknownTimeCheckbox = document.getElementById('time-unknown');
     if (unknownTimeCheckbox && hourSelect && minuteSelect) {
         unknownTimeCheckbox.addEventListener('change', function() {
@@ -23,18 +60,14 @@ window.addEventListener("DOMContentLoaded", function() {
             hourSelect.disabled = isDisabled;
             minuteSelect.disabled = isDisabled;
             if (isDisabled) {
-                hourSelect.value = "";
-                minuteSelect.value = "";
-                hourSelect.required = false;
-                minuteSelect.required = false;
+                hourSelect.required = false; minuteSelect.required = false;
             } else {
-                hourSelect.required = true;
-                minuteSelect.required = true;
+                hourSelect.required = true; minuteSelect.required = true;
             }
         });
     }
 
-    // Formspree form submission logic
+    // --- Formspree Logic ---
     var form = document.getElementById("saju-form");
     var formContainer = document.getElementById("form-container");
     var paymentInstructions = document.getElementById("payment-instructions");
@@ -42,7 +75,6 @@ window.addEventListener("DOMContentLoaded", function() {
     async function handleSubmit(event) {
         event.preventDefault();
         var data = new FormData(event.target);
-        // Show a temporary loading message
         var submitBtn = form.querySelector('.submit-btn');
         submitBtn.disabled = true;
         submitBtn.textContent = '전송 중...';
@@ -50,20 +82,14 @@ window.addEventListener("DOMContentLoaded", function() {
         fetch(event.target.action, {
             method: form.method,
             body: data,
-            headers: {
-                'Accept': 'application/json'
-            }
+            headers: {'Accept': 'application/json'}
         }).then(response => {
             if (response.ok) {
-                formContainer.style.display = 'none'; // Hide the form
-                paymentInstructions.style.display = 'block'; // Show payment instructions
+                formContainer.style.display = 'none';
+                paymentInstructions.style.display = 'block';
             } else {
                 response.json().then(data => {
-                    if (Object.hasOwn(data, 'errors')) {
-                        alert("입력 내용에 오류가 있습니다: " + data["errors"].map(error => error["message"]).join(", "));
-                    } else {
-                        alert("오류가 발생했습니다. 다시 시도해주세요.");
-                    }
+                    alert(data.errors ? data.errors.map(e => e.message).join(", ") : "오류가 발생했습니다.");
                     submitBtn.disabled = false;
                     submitBtn.textContent = '상담 신청하기';
                 })
