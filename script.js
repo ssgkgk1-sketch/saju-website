@@ -1,4 +1,4 @@
-// saju-website/script.js - Dream Version
+// saju-website/script.js - Final Version
 window.addEventListener("DOMContentLoaded", function() {
     
     // --- Particles.js Starfield Background ---
@@ -6,16 +6,13 @@ window.addEventListener("DOMContentLoaded", function() {
       "particles": {
         "number": { "value": 250, "density": { "enable": true, "value_area": 800 } },
         "color": { "value": "#ffffff" },
-        "shape": { "type": "circle", "stroke": { "width": 0, "color": "#000000" }, "polygon": { "nb_sides": 5 }, },
+        "shape": { "type": "circle" },
         "opacity": { "value": 1, "random": true, "anim": { "enable": true, "speed": 1, "opacity_min": 0, "sync": false } },
-        "size": { "value": 2, "random": true, "anim": { "enable": false, "speed": 4, "size_min": 0.3, "sync": false } },
+        "size": { "value": 2, "random": true },
         "line_linked": { "enable": false },
-        "move": { "enable": true, "speed": 0.5, "direction": "bottom", "random": true, "straight": false, "out_mode": "out", "bounce": false, "attract": { "enable": false, "rotateX": 600, "rotateY": 600 } }
+        "move": { "enable": true, "speed": 0.5, "direction": "bottom", "random": true, "straight": false, "out_mode": "out", "bounce": false }
       },
-      "interactivity": {
-        "detect_on": "canvas",
-        "events": { "onhover": { "enable": false }, "onclick": { "enable": false }, "resize": true },
-      },
+      "interactivity": { "detect_on": "canvas", "events": { "onhover": { "enable": false }, "onclick": { "enable": false }, "resize": true }, },
       "retina_detect": true
     });
 
@@ -30,7 +27,6 @@ window.addEventListener("DOMContentLoaded", function() {
 
     const elementsToAnimate = document.querySelectorAll('.scroll-animation');
     elementsToAnimate.forEach((el, index) => {
-        // Apply staggered delay for cards
         if (el.classList.contains('suggestion-card') || el.classList.contains('price-card')) {
             el.style.setProperty('--delay', `${(index % 3) * 0.15}s`);
         }

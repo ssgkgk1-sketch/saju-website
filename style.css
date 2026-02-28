@@ -1,4 +1,4 @@
-/* saju-website/style.css - Dream Version */
+/* saju-website/style.css - Final Version with Floating Cloud Header */
 body, html {
     margin: 0;
     padding: 0;
@@ -49,19 +49,31 @@ body, html {
 }
 
 header {
+    position: relative; /* Needed for the absolute positioned cloud */
     text-align: center;
     margin-bottom: 50px;
+    padding-top: 60px; /* Make space for the cloud */
     padding-bottom: 25px;
     border-bottom: 2px solid rgba(110, 122, 137, 0.5);
 }
 
-.header-logo {
-    max-width: 300px;
-    height: auto;
-    border-radius: 20px;
-    margin-bottom: 25px;
-    box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+.header-cloud {
+    position: absolute;
+    top: -20px;
+    left: 50%;
+    width: 150px;
+    height: 90px;
+    background: url('data:image/svg+xml;base64,PHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHZpZXdCb3g9IjAgMCA2NCA0MSI+CjxwYXRoIGZpbGw9IiNGRkZGRkYiIGQ9Ik00Ny41LDQwLjljLTAuMiwwLTAuNC0wLjEtMC41LTAuMmMtMC4yLTAuMy0wLjEtMC43LDAuMS0wLjljMC4zLTAuMiwxNC4xLTEwLjEsMTUuNy0xMS43YzEuNS0xLjUsMi4zLTMuNCwyLjMtNS40bDAsMCBjMC00LjYtMy43LTguNC04LjQtOC40Yy0yLjQsMC00LjcsMS02LjQsMi42Yy0wLjgsMC44LTEuNywxLjQtMi42LDEuN2MtMC45LDAuMy0xLjgsMC41LTIuOCwwLjVjLTIuNSwwLTQuOS0xLTguOC0yLjlDOC43LDQuMiw0LjMsMi4xLDQuMywyLjEgYy0wLjQtMC4yLTAuOC0wLjEtMS4xLDAuMmMtMC4yLDAuNC0wLjEsMC44LDAuMiwxLjFjMCwwLDQuMiwxLjksNy45LDMuOGMyLjgsMS41LDYuNCwyLjYsOC44LDIuNmMxLjksMCwzLjctMC40LDUuNS0xLjEgYzEuMi0wLjUsMi40LTEuMiwzLjQtMi4xYzEuMS0xLjMsMi40LTIuMSwzLjktMi4xYzIuOSwwLDUuMywyLjQsNS4zLDUuM2MwLDEuMi0wLjUsMi4zLTEuNCwzLjJDMzguMSwyMy4xLDI1LjksMzIuNSwyNS42LDMyLjggYy0wLjIsMC4zLTAuMywwLjYtMC4xLDAuOWMwLjMsMC4yLDAuNiwwLjMsMC45LDAuMWMwLDAsMTIuOS05LjksMTQuMi0xMC45YzEuNy0xLjQsMy43LTIuMyw1LWEyLjNjMy45LDAsNywzLjIsNyw3LjEgYzAsMi43LTEuMSw1LjItMi45LDdjLTEuOCwxLjgtMTYuNiwxMi40LTE2LjcsMTIuNUM0Ny44LDQwLjksNDcuNiw0MC45LDQ3LjUsNDAuOXoiPjwvcGF0aD4KPC9zdmc+Cg==') no-repeat;
+    background-size: contain;
+    opacity: 0.5;
+    animation: bobble 8s infinite ease-in-out;
 }
+
+@keyframes bobble {
+    0%, 100% { transform: translate(-50%, 0px); }
+    50% { transform: translate(-50%, -10px); }
+}
+
 
 header h1 {
     font-size: 3.5em;
@@ -191,12 +203,16 @@ input, select, textarea {
     transition: all 0.4s ease;
     border: 1px solid rgba(255, 255, 255, 0.1);
 }
+.main-container:hover .suggestion-card:not(:hover),
+.main-container:hover .price-card:not(:hover) {
+    filter: brightness(0.7) blur(1px);
+}
+
 .suggestion-card:hover, .price-card:hover {
-    border-color: rgba(255, 255, 255, 0.5); 
-    background-color: rgba(60, 50, 90, 0.7);
     transform: translateY(-8px);
     box-shadow: 0 12px 30px rgba(0,0,0,0.5);
-    border-color: rgba(255, 255, 255, 0.3);
+    border-color: rgba(255, 255, 255, 0.5);
+    background-color: rgba(60, 50, 90, 0.7);
 }
 
 .suggestion-card img { width: 100%; height: 150px; object-fit: cover; }
