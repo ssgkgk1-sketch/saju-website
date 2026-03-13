@@ -71,9 +71,24 @@ header {
 }
 
 .subtitle {
-    font-size: 1.3em;
-    color: #b0c4de;
-    margin-top: 10px;
+    font-size: 1.5em;
+    color: #ddd;
+    margin-top: 15px;
+    font-weight: 300;
+}
+
+.submit-btn {
+    background: linear-gradient(45deg, #A67C52, #f1c40f);
+    color: #000;
+    font-weight: 900;
+    padding: 18px;
+    border-radius: 12px;
+    box-shadow: 0 5px 25px rgba(241, 196, 15, 0.4);
+}
+
+.submit-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 35px rgba(241, 196, 15, 0.6);
 }
 
 section {
