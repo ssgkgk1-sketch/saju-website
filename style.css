@@ -204,7 +204,9 @@ input, select, textarea {
 
 .price-card { padding: 30px; }
 .price-card h3 { margin-top: 0; color: #FFFFFF; }
-.price-card .price { font-size: 2em; font-weight: bold; color: #b0c4de; margin: 10px 0; }
+.price-card .price { font-size: 2.5em; font-weight: bold; color: #f1c40f; margin: 0; text-shadow: 0 0 15px rgba(241, 196, 15, 0.5); }
+.original-price { font-size: 1.1em; color: #999; text-decoration: line-through; margin-bottom: 5px; font-weight: normal; }
+.price-container { margin: 20px 0; background: rgba(0,0,0,0.2); padding: 15px; border-radius: 15px; border: 1px inset rgba(255,255,255,0.1); }
 
 /* Review Section */
 #review-section {
