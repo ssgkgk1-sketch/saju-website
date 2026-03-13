@@ -206,6 +206,99 @@ input, select, textarea {
 .price-card h3 { margin-top: 0; color: #FFFFFF; }
 .price-card .price { font-size: 2em; font-weight: bold; color: #b0c4de; margin: 10px 0; }
 
+/* Review Section */
+#review-section {
+    padding: 60px 20px;
+    margin-top: 40px;
+}
+
+#review-section h2 {
+    color: #fff;
+    text-align: center;
+    margin-bottom: 40px;
+    font-size: 2rem;
+}
+
+.review-container {
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.review-card {
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 25px;
+    padding: 25px;
+    margin-bottom: 25px;
+    display: flex;
+    align-items: center;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease;
+}
+
+.review-card:hover {
+    transform: translateY(-5px);
+}
+
+.review-content {
+    flex: 1;
+}
+
+.review-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 12px;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 12px;
+}
+
+.review-author {
+    font-weight: bold;
+    font-size: 1.2rem;
+    color: #333;
+    margin-right: 15px;
+}
+
+.review-stars {
+    color: #f1c40f;
+    font-size: 1.1rem;
+}
+
+.review-text {
+    color: #444;
+    line-height: 1.6;
+    font-size: 1rem;
+    margin: 0;
+}
+
+.review-image-placeholder {
+    width: 90px;
+    height: 90px;
+    background: #f0f0f0;
+    border-radius: 20px;
+    margin-left: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    border: 1px solid #ddd;
+}
+
+@media (max-width: 600px) {
+    .review-card {
+        flex-direction: column;
+        text-align: center;
+    }
+    .review-image-placeholder {
+        margin-left: 0;
+        margin-top: 20px;
+        width: 100px;
+        height: 100px;
+    }
+    .review-header {
+        justify-content: center;
+    }
+}
+
 /* --- Scroll Animation --- */
 .scroll-animation {
     opacity: 0;
