@@ -8,8 +8,6 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4056740753347385"
-     crossorigin="anonymous"></script>
     <link rel="stylesheet" href="style.css">
     <style>
         /* 3단 탭 스타일 */
@@ -59,6 +57,26 @@
             box-shadow: 0 20px 50px rgba(0,0,0,0.3);
         }
 
+        /* 쿠팡 파트너스 레이아웃 */
+        .ad-section {
+            margin-top: 30px;
+            padding: 20px;
+            background: rgba(255,255,255,0.02);
+            border-radius: 20px;
+        }
+        .ad-title {
+            color: #f1c40f;
+            font-size: 0.9em;
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+        .ad-grid {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
         /* 포춘쿠키 스타일 */
         .fortune-cookie {
             font-size: 100px;
@@ -82,12 +100,12 @@
             animation: fadeInDown 0.5s ease;
         }
 
-        /* 입력창 스타일 */
+        /* 오늘의 운세 입력창 확장 */
         .daily-form {
             display: flex;
             flex-direction: column;
             gap: 20px;
-            max-width: 500px;
+            max-width: 400px;
             margin: 0 auto;
         }
         .input-row {
@@ -95,8 +113,8 @@
             gap: 10px;
         }
         .daily-input {
-            padding: 12px;
-            border-radius: 12px;
+            padding: 15px;
+            border-radius: 15px;
             border: 1px solid #333;
             background: #111;
             color: #fff;
@@ -106,44 +124,10 @@
         }
         .daily-input:focus { border-color: #f1c40f; outline: none; }
 
-        .form-group label {
-            display: block;
-            margin-bottom: 8px;
-            color: #f1c40f;
-            font-weight: bold;
-            text-align: left;
-        }
-
         @keyframes fadeInDown {
             from { opacity: 0; transform: translateY(-20px); }
             to { opacity: 1; transform: translateY(0); }
         }
-
-        /* 성공 안내 페이지 스타일 */
-        #success-message {
-            display: none;
-            text-align: center;
-            padding: 60px 20px;
-            background: rgba(255,255,255,0.05);
-            border-radius: 30px;
-            border: 2px solid #f1c40f;
-            animation: fadeIn 0.8s ease;
-        }
-        .kakao-link-btn {
-            display: inline-block;
-            background: #FEE500;
-            color: #191919;
-            padding: 15px 30px;
-            border-radius: 15px;
-            font-weight: bold;
-            text-decoration: none;
-            margin: 25px 0;
-            font-size: 1.1em;
-            transition: 0.3s;
-        }
-        .kakao-link-btn:hover { transform: scale(1.05); box-shadow: 0 5px 15px rgba(254, 229, 0, 0.4); }
-
-        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
     </style>
 </head>
 <body>
@@ -182,114 +166,49 @@
 
             <section id="form-section">
                 <h2 style="text-align:center; margin-bottom:30px;">프리미엄 상담 신청</h2>
-                
-                <!-- 입력 폼 -->
                 <div id="form-container" style="max-width:600px; margin:0 auto; background:rgba(255,255,255,0.05); padding:40px; border-radius:30px;">
                     <form id="saju-form" action="https://formspree.io/f/xpqjbvny" method="POST">
-                        <div class="form-group">
-                            <label>이름</label>
-                            <input type="text" name="이름" required class="daily-input" style="width:100%;">
-                        </div>
-                        <div class="form-group" style="margin-top:15px;">
-                            <label>성별</label>
-                            <select name="성별" required class="daily-input" style="width:100%;">
-                                <option value="">선택</option>
-                                <option value="남성">남성</option>
-                                <option value="여성">여성</option>
-                            </select>
-                        </div>
-                        <div class="form-group" style="margin-top:15px;">
-                            <label>생년월일</label>
-                            <div class="input-row">
-                                <input type="number" name="생년" placeholder="년(YYYY)" required class="daily-input">
-                                <input type="number" name="생월" placeholder="월(MM)" required class="daily-input">
-                                <input type="number" name="생일" placeholder="일(DD)" required class="daily-input">
-                            </div>
-                        </div>
-                        <div class="form-group" style="margin-top:15px;">
-                            <label>태어난 시간</label>
-                            <div class="input-row" id="time-input-row">
-                                <input type="number" name="태어난 시" placeholder="시" class="daily-input" id="birth-hour-input">
-                                <input type="number" name="태어난 분" placeholder="분" class="daily-input" id="birth-min-input">
-                            </div>
-                            <div style="text-align:left; margin-top:10px;">
-                                <input type="checkbox" id="time-unknown" name="시간모름" onchange="toggleTimeInput(this)">
-                                <label for="time-unknown" style="display:inline; color:#888; font-weight:normal; margin-left:5px;">태어난 시간을 모릅니다</label>
-                            </div>
-                        </div>
-                        <div class="form-group" style="margin-top:15px;">
-                            <label>상담하고 싶은 내용</label>
-                            <textarea name="상담 내용" rows="5" required class="daily-input" style="width:100%; text-align:left;"></textarea>
-                        </div>
+                        <div class="form-group"><label>이름</label><input type="text" name="이름" required style="width:100%; padding:12px; border-radius:10px; background:#222; color:#fff; border:1px solid #444;"></div>
+                        <div class="form-group" style="margin-top:15px;"><label>성별</label><select name="성별" required style="width:100%; padding:12px; border-radius:10px; background:#222; color:#fff; border:1px solid #444;"><option value="">선택</option><option value="남성">남성</option><option value="여성">여성</option></select></div>
+                        <div class="form-group" style="margin-top:15px;"><label>상담 내용</label><textarea name="상담 내용" rows="5" required style="width:100%; padding:12px; border-radius:10px; background:#222; color:#fff; border:1px solid #444;"></textarea></div>
                         <button type="submit" class="submit-btn" style="width:100%; margin-top:25px; padding:18px; border-radius:15px; background:linear-gradient(45deg, #A67C52, #f1c40f); font-weight:900; cursor:pointer;">상담 신청하기</button>
                     </form>
-                </div>
-
-                <!-- 제출 성공 메시지 -->
-                <div id="success-message" style="max-width:600px; margin:0 auto;">
-                    <h2 style="color: #f1c40f;">상담 요청이 완료되었습니다!</h2>
-                    <p style="font-size: 1.1em; line-height: 1.8; color: #eee; margin-top: 20px;">
-                        소중한 사주 상담을 신청해 주셔서 감사합니다.<br>
-                        아래의 <strong>오픈카톡</strong>으로 결제를 완료해 주시면,<br>
-                        확인 후 정성스러운 상담을 시작하도록 하겠습니다.
-                    </p>
-                    <a href="https://open.kakao.com/o/sgbQDnii" target="_blank" class="kakao-link-btn">
-                        <i class="fas fa-comment"></i> 오픈카톡으로 결제 및 상담 시작하기
-                    </a>
-                    <p style="color: #f1c40f; font-weight: bold; font-size: 1.1em; margin-top: 20px;">
-                        "당신에게 소중한 사주길이 되었으면 좋겠습니다."
-                    </p>
                 </div>
             </section>
 
             <section id="suggestion-section">
-                <h2>아직 궁금한 점이 없으신가요?<br>이런 것들도 알 수 있습니다!</h2>
+                <h2>이런 것들도 알 수 있습니다!</h2>
                 <div class="suggestion-grid">
-                     <div class="suggestion-card"><img src="images/content/2026.jpg" alt="2026"><h3>2026년 나의 운세는?</h3><p>다가오는 2026년, 당신의 대운은 어떻게 흐를까요?</p></div>
-                     <div class="suggestion-card"><img src="images/content/interior.jpg" alt="인테리어"><h3>재물운을 부르는 집</h3><p>당신의 사주에 맞는 가구 배치 팁을 알아보세요.</p></div>
-                     <div class="suggestion-card"><img src="images/content/action_up.jpg" alt="도전"><h3>운을 상승시키는 도전</h3><p>당신의 기운을 북돋아 줄 과감한 도전은 무엇일까요?</p></div>
-                     <div class="suggestion-card"><img src="images/content/action_down.jpg" alt="정체"><h3>운을 가로막는 정체</h3><p>나도 모르게 운의 흐름을 막는 행동을 알아보세요.</p></div>
-                     <div class="suggestion-card"><img src="images/content/travel.jpg" alt="여행지"><h3>운을 채워주는 여행지</h3><p>부족한 오행의 기운을 채워줄 여행지는 어디일까요?</p></div>
-                     <div class="suggestion-card"><img src="images/content/wealth.jpg" alt="재물운"><h3>나의 재물운은?</h3><p>나는 언제 돈을 벌고, 언제 돈을 지켜야 할까요?</p></div>
-                     <div class="suggestion-card"><img src="images/content/love.jpg" alt="궁합"><h3>연애와 궁합</h3><p>나의 연애운은 언제 빛날까요? 인연의 흐름을 분석해 드립니다.</p></div>
+                     <div class="suggestion-card"><img src="images/content/2026.jpg" alt="2026"><h3>2026년 나의 운세는?</h3><p>당신의 대운은 어떻게 흐를까요?</p></div>
+                     <div class="suggestion-card"><img src="images/content/interior.jpg" alt="인테리어"><h3>재물운을 부르는 집</h3><p>사주에 맞는 가구 배치 팁!</p></div>
+                     <div class="suggestion-card"><img src="images/content/wealth.jpg" alt="재물운"><h3>나의 재물운은?</h3><p>언제 돈을 벌고 지켜야 할까요?</p></div>
+                     <div class="suggestion-card"><img src="images/content/love.jpg" alt="궁합"><h3>연애와 궁합</h3><p>인연의 흐름을 분석해 드립니다.</p></div>
                 </div>
             </section>
+
+            <!-- 상담하기 탭 하단 풍수 아이템 추천 -->
+            <div class="interactive-container" style="background:none; border:none; box-shadow:none;">
+                <p class="ad-title">🏠 집안의 기운을 바꿔줄 풍수 인테리어 추천</p>
+                <div class="ad-grid">
+                    <iframe src="https://coupa.ng/clUg5E" width="120" height="240" frameborder="0" scrolling="no" referrerpolicy="unsafe-url"></iframe>
+                    <iframe src="https://coupa.ng/clUg5K" width="120" height="240" frameborder="0" scrolling="no" referrerpolicy="unsafe-url"></iframe>
+                </div>
+            </div>
 
             <section id="pricing-section">
                 <h2>상담 비용 안내</h2>
                 <p style="text-align: center; color: #f1c40f; margin-bottom: 30px; font-weight: bold;">[ 오픈 기념 파격 할인 이벤트 진행 중! ]</p>
                 <div class="pricing-grid">
-                    <div class="price-card">
-                        <h3>기본 사주 상담</h3>
-                        <div class="price-container">
-                            <p class="original-price">15,000원</p>
-                            <p class="price">5,900원</p>
-                        </div>
-                    </div>
-                    <div class="price-card">
-                        <h3>궁합 추가 상담</h3>
-                        <div class="price-container">
-                            <p class="original-price">25,000원</p>
-                            <p class="price">9,900원</p>
-                        </div>
-                    </div>
+                    <div class="price-card"><h3>기본 사주 상담</h3><div class="price-container"><p class="original-price">15,000원</p><p class="price">5,900원</p></div></div>
+                    <div class="price-card"><h3>궁합 추가 상담</h3><div class="price-container"><p class="original-price">25,000원</p><p class="price">9,900원</p></div></div>
                 </div>
             </section>
 
             <section id="review-section">
                 <h2>실제 이용자 후기</h2>
                 <div class="review-container">
-                    <div class="review-card" style="background:#fff; color:#333; padding:25px; border-radius:25px; display:flex; align-items:center; margin-bottom:20px;">
-                        <div style="flex:1;"><span style="font-weight:bold;">hans****</span> <span style="color:#f1c40f;">★★★★★</span><p style="margin-top:10px;">올해 운세가 정말 소름 돋게 잘 맞아요! 덕분에 마음이 편안해졌습니다.</p></div>
-                        <div style="width:80px; height:80px; background:#f0f0f0; border-radius:15px; margin-left:20px; display:flex; justify-content:center; align-items:center;"><i class="fas fa-image" style="color:#ddd;"></i></div>
-                    </div>
-                    <div class="review-card" style="background:#fff; color:#333; padding:25px; border-radius:25px; display:flex; align-items:center; margin-bottom:20px;">
-                        <div style="flex:1;"><span style="font-weight:bold;">yj****</span> <span style="color:#f1c40f;">★★★★★</span><p style="margin-top:10px;">답답한 일이 많았는데 조언해주신 내용이 큰 도움이 됐어요. 속이 꽉 찬 느낌입니다.</p></div>
-                        <div style="width:80px; height:80px; background:#f0f0f0; border-radius:15px; margin-left:20px; display:flex; justify-content:center; align-items:center;"><i class="fas fa-image" style="color:#ddd;"></i></div>
-                    </div>
-                    <div class="review-card" style="background:#fff; color:#333; padding:25px; border-radius:25px; display:flex; align-items:center; margin-bottom:20px;">
-                        <div style="flex:1;"><span style="font-weight:bold;">juju***</span> <span style="color:#f1c40f;">★★★★★</span><p style="margin-top:10px;">인생의 갈림길에서 고민이 많았는데 방향을 잡았습니다. 너무 친절하시고 정확해요!</p></div>
-                        <div style="width:80px; height:80px; background:#f0f0f0; border-radius:15px; margin-left:20px; display:flex; justify-content:center; align-items:center;"><i class="fas fa-image" style="color:#ddd;"></i></div>
+                    <div class="review-card" style="background:#fff; color:#333; padding:20px; border-radius:20px; display:flex; align-items:center; margin-bottom:15px;">
+                        <div style="flex:1;"><span style="font-weight:bold;">hans****</span> <span style="color:#f1c40f;">★★★★★</span><p style="margin-top:5px; font-size:0.9em;">소름 돋게 잘 맞아요! 덕분에 마음이 편안해졌습니다.</p></div>
                     </div>
                 </div>
             </section>
@@ -297,42 +216,54 @@
 
         <!-- 2번 탭: 포춘쿠키 -->
         <div id="tab-cookie" class="tab-content">
-            <header style="text-align: center; padding: 100px 0 20px 0;">
-                <h1 style="color: #f1c40f; font-size:3em;">신비의 포춘쿠키</h1>
-                <p class="subtitle">오늘 당신에게 찾아올 행운의 메시지는 무엇일까요?</p>
+            <header style="text-align: center; padding: 80px 0 20px 0;">
+                <h1 style="color: #f1c40f;">신비의 포춘쿠키</h1>
+                <p class="subtitle">행운의 메시지와 함께 마음을 다스려보세요</p>
             </header>
             <div class="interactive-container">
                 <div class="fortune-cookie" id="cookie-btn" onclick="crackCookie()">🥠</div>
-                <div class="fortune-message" id="cookie-msg"></div>
-                <p style="margin-top: 30px; color: #666;">(쿠키를 누르면 새로운 행운이 열립니다)</p>
+                <div id="cookie-msg" class="fortune-message"></div>
+                
+                <div class="ad-section" style="margin-top:50px;">
+                    <p class="ad-title">📿 오늘의 마음을 다스려줄 행운 아이템</p>
+                    <iframe src="https://coupa.ng/clUg5X" width="120" height="240" frameborder="0" scrolling="no" referrerpolicy="unsafe-url"></iframe>
+                </div>
             </div>
         </div>
 
         <!-- 3번 탭: 오늘의 운세 -->
         <div id="tab-daily" class="tab-content">
-            <header style="text-align: center; padding: 100px 0 20px 0;">
-                <h1 style="color: #f1c40f; font-size:3em;">오늘의 맞춤 운세</h1>
-                <p class="subtitle">정확한 생년월일을 입력하여 오늘의 기운을 분석하세요</p>
+            <header style="text-align: center; padding: 80px 0 20px 0;">
+                <h1 style="color: #f1c40f;">오늘의 맞춤 운세</h1>
+                <p class="subtitle">생년월일을 입력하여 오늘의 기운을 분석하세요</p>
             </header>
             <div class="interactive-container">
                 <div class="daily-form">
                     <div class="input-row">
-                        <input type="number" id="birth-year-v" class="daily-input" placeholder="년(YYYY)">
-                        <input type="number" id="birth-month-v" class="daily-input" placeholder="월(MM)">
-                        <input type="number" id="birth-day-v" class="daily-input" placeholder="일(DD)">
+                        <input type="number" id="birth-year" class="daily-input" placeholder="년(YYYY)">
+                        <input type="number" id="birth-month" class="daily-input" placeholder="월">
+                        <input type="number" id="birth-day" class="daily-input" placeholder="일">
                     </div>
-                    <select id="daily-gender-v" class="daily-input">
+                    <select id="daily-gender" class="daily-input">
                         <option value="male">남성</option>
                         <option value="female">여성</option>
                     </select>
-                    <button class="submit-btn" style="padding:15px; border-radius:15px; background:linear-gradient(45deg, #A67C52, #f1c40f); font-weight:bold; cursor:pointer;" onclick="getDailyFortune()">나의 오늘 운세 분석하기</button>
+                    <button class="submit-btn" style="padding:15px; border-radius:15px;" onclick="getDailyFortune()">오늘의 기운 분석</button>
                 </div>
-                <div id="daily-result-box" style="display:none; margin-top:40px; text-align:left;">
-                    <div style="background:rgba(241,196,15,0.1); padding:20px; border-radius:20px; border:1px solid rgba(241,196,15,0.3); margin-bottom:15px;">
+                <div id="daily-result-box" style="display:none; margin-top:30px; text-align:left;">
+                    <div style="background:rgba(241,196,15,0.1); padding:20px; border-radius:20px; border:1px solid rgba(241,196,15,0.3); margin-bottom:20px;">
                         <h4 style="color:#f1c40f; margin-bottom:10px;">✨ 오늘의 운세 총평</h4>
-                        <p id="total-luck" style="color:#ddd;"></p>
+                        <p id="total-luck" style="color:#ddd; font-size:0.95em;"></p>
                     </div>
-                    <button class="submit-btn" style="width:100%; padding:15px; border-radius:15px;" onclick="switchTab('tab-consult', document.querySelector('.nav-tab'))">더 정밀한 유료 상담 받기 (5,900원)</button>
+                    
+                    <div class="ad-section">
+                        <p class="ad-title">💰 재물운과 행운을 높여주는 추천 아이템</p>
+                        <div class="ad-grid">
+                            <iframe src="https://coupa.ng/clUg5C" width="120" height="240" frameborder="0" scrolling="no" referrerpolicy="unsafe-url"></iframe>
+                            <iframe src="https://coupa.ng/clUg5T" width="120" height="240" frameborder="0" scrolling="no" referrerpolicy="unsafe-url"></iframe>
+                        </div>
+                    </div>
+                    <button class="submit-btn" style="width:100%; margin-top:20px; font-size:1em;" onclick="switchTab('tab-consult', document.querySelector('.nav-tab'))">더 정밀한 1:1 상담 받기 (5,900원)</button>
                 </div>
             </div>
         </div>
@@ -344,11 +275,7 @@
             document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
             document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
             document.getElementById(tabId).classList.add('active');
-            if (element) {
-                element.classList.add('active');
-            } else {
-                document.querySelector('.nav-tab').classList.add('active');
-            }
+            if(element) element.classList.add('active');
             window.scrollTo(0, 0);
         }
 
@@ -362,50 +289,11 @@
         }
 
         function getDailyFortune() {
-            const y = document.getElementById('birth-year-v').value;
-            const m = document.getElementById('birth-month-v').value;
-            const d = document.getElementById('birth-day-v').value;
-            if(!y || !m || !d) { alert("생년월일을 모두 입력해주세요!"); return; }
+            const y = document.getElementById('birth-year').value;
+            if(!y) { alert("생년월일을 입력해주세요!"); return; }
             document.getElementById('daily-result-box').style.display = 'block';
-            document.getElementById('total-luck').innerText = "입력하신 " + y + "년 " + m + "월 " + d + "일의 기운을 분석한 결과, 오늘은 정적인 활동보다 동적인 활동에서 큰 이득이 있는 날입니다. 자신감을 가지고 움직이세요!";
+            document.getElementById('total-luck').innerText = "분석 결과, 오늘은 정적인 활동보다 동적인 활동에서 큰 이득이 있는 날입니다. 자신감을 가지고 움직이세요!";
         }
-
-        function toggleTimeInput(checkbox) {
-            const hour = document.getElementById('birth-hour-input');
-            const min = document.getElementById('birth-min-input');
-            if (checkbox.checked) {
-                hour.disabled = true;
-                min.disabled = true;
-                hour.style.opacity = '0.3';
-                min.style.opacity = '0.3';
-            } else {
-                hour.disabled = false;
-                min.disabled = false;
-                hour.style.opacity = '1';
-                min.style.opacity = '1';
-            }
-        }
-
-        const sajuForm = document.getElementById('saju-form');
-        sajuForm.onsubmit = async (e) => {
-            e.preventDefault();
-            const formData = new FormData(sajuForm);
-            
-            // 이메일 전송 (Formspree)
-            fetch(sajuForm.action, {
-                method: 'POST',
-                body: formData,
-                headers: { 'Accept': 'application/json' }
-            }).then(() => {
-                document.getElementById('form-container').style.display = 'none';
-                document.getElementById('success-message').style.display = 'block';
-                window.scrollTo(0, document.getElementById('success-message').offsetTop - 100);
-            }).catch(() => {
-                // 에러나도 사용자에게는 성공 화면을 보여주어 흐름을 유지 (백그라운드 처리)
-                document.getElementById('form-container').style.display = 'none';
-                document.getElementById('success-message').style.display = 'block';
-            });
-        };
     </script>
     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
     <script src="script.js"></script>
