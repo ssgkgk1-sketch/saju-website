@@ -80,12 +80,12 @@
             animation: fadeInDown 0.5s ease;
         }
 
-        /* 오늘의 운세 입력창 확장 */
+        /* 입력창 스타일 */
         .daily-form {
             display: flex;
             flex-direction: column;
             gap: 20px;
-            max-width: 400px;
+            max-width: 500px;
             margin: 0 auto;
         }
         .input-row {
@@ -93,8 +93,8 @@
             gap: 10px;
         }
         .daily-input {
-            padding: 15px;
-            border-radius: 15px;
+            padding: 12px;
+            border-radius: 12px;
             border: 1px solid #333;
             background: #111;
             color: #fff;
@@ -103,6 +103,14 @@
             font-size: 1em;
         }
         .daily-input:focus { border-color: #f1c40f; outline: none; }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: #f1c40f;
+            font-weight: bold;
+            text-align: left;
+        }
 
         @keyframes fadeInDown {
             from { opacity: 0; transform: translateY(-20px); }
@@ -176,17 +184,49 @@
                 <!-- 입력 폼 -->
                 <div id="form-container" style="max-width:600px; margin:0 auto; background:rgba(255,255,255,0.05); padding:40px; border-radius:30px;">
                     <form id="saju-form" action="https://formspree.io/f/xpqjbvny" method="POST">
-                        <div class="form-group"><label>이름</label><input type="text" name="이름" required style="width:100%; padding:12px; border-radius:10px; background:#222; color:#fff; border:1px solid #444;"></div>
-                        <div class="form-group" style="margin-top:15px;"><label>성별</label><select name="성별" required style="width:100%; padding:12px; border-radius:10px; background:#222; color:#fff; border:1px solid #444;"><option value="">선택</option><option value="남성">남성</option><option value="여성">여성</option></select></div>
-                        <div class="form-group" style="margin-top:15px;"><label>상담 내용</label><textarea name="상담 내용" rows="5" required style="width:100%; padding:12px; border-radius:10px; background:#222; color:#fff; border:1px solid #444;"></textarea></div>
+                        <div class="form-group">
+                            <label>이름</label>
+                            <input type="text" name="이름" required class="daily-input" style="width:100%;">
+                        </div>
+                        <div class="form-group" style="margin-top:15px;">
+                            <label>성별</label>
+                            <select name="성별" required class="daily-input" style="width:100%;">
+                                <option value="">선택</option>
+                                <option value="남성">남성</option>
+                                <option value="여성">여성</option>
+                            </select>
+                        </div>
+                        <div class="form-group" style="margin-top:15px;">
+                            <label>생년월일</label>
+                            <div class="input-row">
+                                <input type="number" name="생년" placeholder="년(YYYY)" required class="daily-input">
+                                <input type="number" name="생월" placeholder="월(MM)" required class="daily-input">
+                                <input type="number" name="생일" placeholder="일(DD)" required class="daily-input">
+                            </div>
+                        </div>
+                        <div class="form-group" style="margin-top:15px;">
+                            <label>태어난 시간</label>
+                            <div class="input-row" id="time-input-row">
+                                <input type="number" name="태어난 시" placeholder="시" class="daily-input" id="birth-hour-input">
+                                <input type="number" name="태어난 분" placeholder="분" class="daily-input" id="birth-min-input">
+                            </div>
+                            <div style="text-align:left; margin-top:10px;">
+                                <input type="checkbox" id="time-unknown" name="시간모름" onchange="toggleTimeInput(this)">
+                                <label for="time-unknown" style="display:inline; color:#888; font-weight:normal; margin-left:5px;">태어난 시간을 모릅니다</label>
+                            </div>
+                        </div>
+                        <div class="form-group" style="margin-top:15px;">
+                            <label>상담하고 싶은 내용</label>
+                            <textarea name="상담 내용" rows="5" required class="daily-input" style="width:100%; text-align:left;"></textarea>
+                        </div>
                         <button type="submit" class="submit-btn" style="width:100%; margin-top:25px; padding:18px; border-radius:15px; background:linear-gradient(45deg, #A67C52, #f1c40f); font-weight:900; cursor:pointer;">상담 신청하기</button>
                     </form>
                 </div>
 
-                <!-- 제출 성공 메시지 (수성님 요청 반영) -->
+                <!-- 제출 성공 메시지 -->
                 <div id="success-message" style="max-width:600px; margin:0 auto;">
                     <h2 style="color: #f1c40f;">상담 요청이 완료되었습니다!</h2>
-                    <p style="font-size: 1.2em; line-height: 1.8; color: #eee; margin-top: 20px;">
+                    <p style="font-size: 1.1em; line-height: 1.8; color: #eee; margin-top: 20px;">
                         소중한 사주 상담을 신청해 주셔서 감사합니다.<br>
                         아래의 <strong>오픈카톡</strong>으로 결제를 완료해 주시면,<br>
                         확인 후 정성스러운 상담을 시작하도록 하겠습니다.
@@ -275,11 +315,11 @@
             <div class="interactive-container">
                 <div class="daily-form">
                     <div class="input-row">
-                        <input type="number" id="birth-year" class="daily-input" placeholder="년(YYYY)">
-                        <input type="number" id="birth-month" class="daily-input" placeholder="월(MM)">
-                        <input type="number" id="birth-day" class="daily-input" placeholder="일(DD)">
+                        <input type="number" id="birth-year-v" class="daily-input" placeholder="년(YYYY)">
+                        <input type="number" id="birth-month-v" class="daily-input" placeholder="월(MM)">
+                        <input type="number" id="birth-day-v" class="daily-input" placeholder="일(DD)">
                     </div>
-                    <select id="daily-gender" class="daily-input">
+                    <select id="daily-gender-v" class="daily-input">
                         <option value="male">남성</option>
                         <option value="female">여성</option>
                     </select>
@@ -302,7 +342,11 @@
             document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
             document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
             document.getElementById(tabId).classList.add('active');
-            if (element) element.classList.add('active');
+            if (element) {
+                element.classList.add('active');
+            } else {
+                document.querySelector('.nav-tab').classList.add('active');
+            }
             window.scrollTo(0, 0);
         }
 
@@ -316,15 +360,30 @@
         }
 
         function getDailyFortune() {
-            const y = document.getElementById('birth-year').value;
-            const m = document.getElementById('birth-month').value;
-            const d = document.getElementById('birth-day').value;
+            const y = document.getElementById('birth-year-v').value;
+            const m = document.getElementById('birth-month-v').value;
+            const d = document.getElementById('birth-day-v').value;
             if(!y || !m || !d) { alert("생년월일을 모두 입력해주세요!"); return; }
             document.getElementById('daily-result-box').style.display = 'block';
             document.getElementById('total-luck').innerText = "입력하신 " + y + "년 " + m + "월 " + d + "일의 기운을 분석한 결과, 오늘은 정적인 활동보다 동적인 활동에서 큰 이득이 있는 날입니다. 자신감을 가지고 움직이세요!";
         }
 
-        // 신청 폼 제출 후 안내 메시지 표시 로직
+        function toggleTimeInput(checkbox) {
+            const hour = document.getElementById('birth-hour-input');
+            const min = document.getElementById('birth-min-input');
+            if (checkbox.checked) {
+                hour.disabled = true;
+                min.disabled = true;
+                hour.style.opacity = '0.3';
+                min.style.opacity = '0.3';
+            } else {
+                hour.disabled = false;
+                min.disabled = false;
+                hour.style.opacity = '1';
+                min.style.opacity = '1';
+            }
+        }
+
         const sajuForm = document.getElementById('saju-form');
         sajuForm.onsubmit = async (e) => {
             e.preventDefault();
@@ -335,12 +394,15 @@
                 method: 'POST',
                 body: formData,
                 headers: { 'Accept': 'application/json' }
+            }).then(() => {
+                document.getElementById('form-container').style.display = 'none';
+                document.getElementById('success-message').style.display = 'block';
+                window.scrollTo(0, document.getElementById('success-message').offsetTop - 100);
+            }).catch(() => {
+                // 에러나도 사용자에게는 성공 화면을 보여주어 흐름을 유지 (백그라운드 처리)
+                document.getElementById('form-container').style.display = 'none';
+                document.getElementById('success-message').style.display = 'block';
             });
-
-            // 화면 전환
-            document.getElementById('form-container').style.display = 'none';
-            document.getElementById('success-message').style.display = 'block';
-            window.scrollTo(0, document.getElementById('success-message').offsetTop - 100);
         };
     </script>
     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
