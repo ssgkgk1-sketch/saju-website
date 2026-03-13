@@ -124,14 +124,14 @@
 
     <div class="main-container">
         
-        <!-- 1번 탭: 상담하기 (모든 내용 포함) -->
+        <!-- 1번 탭: 상담하기 (모든 기존 내용 복구) -->
         <div id="tab-consult" class="tab-content active">
             <header>
                 <div class="header-video-container">
                     <video autoplay muted loop playsinline src="videos/header-background.mp4"></video>
                 </div>
                 <h1 style="font-size: 3.5em; margin-bottom: 10px; color: #fff; text-shadow: 0 0 25px rgba(255,255,255,0.4); text-align:center; padding-top:60px;">구름 사주</h1>
-                <p class="subtitle" style="text-align:center;">인생의 골든 타임을 찾아드리는 정밀 사주 상담</p>
+                <p class="subtitle" style="text-align:center;">당신이 놓치고 있는 대운(大運)의 흐름, 그 '골든 타임'을 찾아드립니다</p>
                 <div style="margin-top: 25px; text-align:center;">
                     <span style="background: rgba(241, 196, 15, 0.2); border: 1px solid #f1c40f; color: #f1c40f; padding: 6px 20px; border-radius: 20px; font-size: 0.95em; font-weight:bold;">
                         ● 상담사 실시간 대기 중
@@ -141,25 +141,106 @@
 
             <section id="intro">
                 <h2 style="color: #f1c40f; text-align:center; margin-top:60px;">정확한 분석을 위해 하루 단 '10명'만 상담합니다.</h2>
-                <p style="text-align:center; max-width:800px; margin:20px auto; color:#ccc; line-height:1.8;">구름 사주는 수천 년의 지혜가 담긴 명리학을 통해 당신의 인생 나침반을 가장 정밀하게 교정해 드립니다.</p>
+                <p style="text-align:center; max-width:800px; margin:20px auto; color:#ccc; line-height:1.8;">타고난 기운을 이해하고 미래를 준비하는 것은 현명한 자의 자세입니다.<br>구름 사주는 수천 년의 지혜가 담긴 명리학을 통해 당신의 인생 나침반을 가장 정밀하게 교정해 드립니다.</p>
             </section>
 
             <section id="form-section">
-                <h2 style="text-align:center; margin-bottom:30px;">프리미엄 상담 신청</h2>
-                <div id="form-container" style="max-width:600px; margin:0 auto; background:rgba(255,255,255,0.05); padding:40px; border-radius:30px;">
+                <h2 style="text-align:center; margin-bottom:30px;">사주 상담 신청</h2>
+                <div id="form-container">
                     <form id="saju-form" action="https://formspree.io/f/xpqjbvny" method="POST">
-                        <div class="form-group"><label>이름</label><input type="text" name="이름" required style="width:100%; padding:12px; border-radius:10px; background:#222; color:#fff; border:1px solid #444;"></div>
-                        <div class="form-group" style="margin-top:15px;"><label>성별</label><select name="성별" required style="width:100%; padding:12px; border-radius:10px; background:#222; color:#fff; border:1px solid #444;"><option value="">선택</option><option value="남성">남성</option><option value="여성">여성</option></select></div>
-                        <div class="form-group" style="margin-top:15px;"><label>상담 내용</label><textarea name="상담 내용" rows="5" required style="width:100%; padding:12px; border-radius:10px; background:#222; color:#fff; border:1px solid #444;"></textarea></div>
-                        <button type="submit" class="submit-btn" style="width:100%; margin-top:25px; padding:18px; border-radius:15px; background:linear-gradient(45deg, #A67C52, #f1c40f); font-weight:900; cursor:pointer;">지금 바로 나의 2026년 운세 확인하기</button>
+                        <div class="form-group">
+                            <label for="name">이름</label>
+                            <input type="text" id="name" name="이름" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="gender">성별</label>
+                            <select id="gender" name="성별" required>
+                                <option value="">선택</option>
+                                <option value="남성">남성</option>
+                                <option value="여성">여성</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>생년월일</label>
+                            <div class="birth-group">
+                                <select name="달력종류" required>
+                                    <option value="양력">양력</option>
+                                    <option value="음력">음력</option>
+                                </select>
+                                <input type="number" name="생년" placeholder="예) 1990" required>
+                                <input type="number" name="생월" placeholder="예) 5" required>
+                                <input type="number" name="생일" placeholder="예) 15" required>
+                            </div>
+                        </div>
+                         <div class="form-group">
+                            <label for="age">나이 (한국 나이)</label>
+                            <input type="number" id="age" name="나이 (한국)" placeholder="예) 35" required>
+                        </div>
+                        <div class="form-group">
+                            <label>태어난 시간</label>
+                            <div class="birth-time-group">
+                                <select id="birth-hour" name="태어난 시간 (시)" required>
+                                    <option value="">시</option>
+                                </select>
+                                <select id="birth-minute" name="태어난 시간 (분)" required>
+                                    <option value="">분</option>
+                                </select>
+                                <div class="unknown-time">
+                                    <input type="checkbox" id="time-unknown" name="시간모름">
+                                    <label for="time-unknown">모름</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="contact">연락처 (이메일 또는 전화번호)</label>
+                            <input type="text" id="contact" name="연락처" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="question">상담받고 싶은 내용 (구체적으로)</label>
+                            <textarea id="question" name="상담 내용" rows="5" required></textarea>
+                        </div>
+                        <button type="submit" class="submit-btn">지금 바로 나의 2026년 운세 확인하기</button>
+                        <p class="form-notice" style="color: #f1c40f; font-weight: bold;">※ 현재 신청 시 24시간 내 우선 분석 결과가 전달됩니다.</p>
                     </form>
                 </div>
             </section>
 
-            <!-- 후기 섹션 (상담하기 탭 하단에 배치) -->
-            <section id="review-section" style="margin-top:80px; padding-bottom:80px;">
-                <h2 style="text-align:center; margin-bottom:40px;">실제 이용자 후기</h2>
-                <div class="review-container" style="max-width:700px; margin:0 auto;">
+            <section id="suggestion-section">
+                <h2>아직 궁금한 점이 없으신가요?<br>이런 것들도 알 수 있습니다!</h2>
+                <div class="suggestion-grid">
+                     <div class="suggestion-card"><img src="images/content/2026.jpg" alt="2026"><h3>2026년 나의 운세는?</h3><p>다가오는 2026년, 당신의 대운은 어떻게 흐를까요?</p></div>
+                    <div class="suggestion-card"><img src="images/content/interior.jpg" alt="인테리어"><h3>재물운을 부르는 집</h3><p>당신의 사주에 맞는 가구 배치 팁을 알아보세요.</p></div>
+                    <div class="suggestion-card"><img src="images/content/wealth.jpg" alt="재물운"><h3>나의 재물운은?</h3><p>나는 언제 돈을 벌고, 언제 돈을 지켜야 할까요?</p></div>
+                     <div class="suggestion-card"><img src="images/content/love.jpg" alt="궁합"><h3>연애와 궁합</h3><p>나의 연애운은 언제 빛날까요? 인연의 흐름을 분석해 드립니다.</p></div>
+                </div>
+            </section>
+
+            <section id="pricing-section">
+                <h2>상담 비용 안내</h2>
+                <p style="text-align: center; color: #f1c40f; margin-bottom: 30px; font-weight: bold;">[ 오픈 기념 파격 할인 이벤트 진행 중! ]</p>
+                <div class="pricing-grid">
+                    <div class="price-card">
+                        <h3>기본 사주 상담</h3>
+                        <div class="price-container">
+                            <p class="original-price">15,000원</p>
+                            <p class="price">5,900원</p>
+                        </div>
+                        <p>전반적인 운의 흐름을 분석해 드립니다.</p>
+                    </div>
+                    <div class="price-card">
+                        <h3>궁합 추가 상담</h3>
+                        <div class="price-container">
+                            <p class="original-price">25,000원</p>
+                            <p class="price">9,900원</p>
+                        </div>
+                        <p>특정 인물과의 관계를 심층 분석합니다.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="review-section">
+                <h2>실제 이용자 후기</h2>
+                <div class="review-container">
                     <div class="review-card" style="background:#fff; color:#333; padding:25px; border-radius:25px; display:flex; align-items:center; margin-bottom:20px;">
                         <div style="flex:1;"><span style="font-weight:bold;">hans****</span> <span style="color:#f1c40f;">★★★★★</span><p style="margin-top:10px;">올해 운세가 정말 소름 돋게 잘 맞아요! 덕분에 마음이 편안해졌습니다.</p></div>
                         <div style="width:80px; height:80px; background:#f0f0f0; border-radius:15px; margin-left:20px; display:flex; justify-content:center; align-items:center;"><i class="fas fa-image" style="color:#ddd;"></i></div>
@@ -168,7 +249,7 @@
             </section>
         </div>
 
-        <!-- 2번 탭: 포춘쿠키 (독립형) -->
+        <!-- 2번 탭: 포춘쿠키 -->
         <div id="tab-cookie" class="tab-content">
             <header style="text-align: center; padding: 100px 0 20px 0;">
                 <h1 style="color: #f1c40f; font-size:3em;">신비의 포춘쿠키</h1>
@@ -181,7 +262,7 @@
             </div>
         </div>
 
-        <!-- 3번 탭: 오늘의 운세 (독립형 + 입력창 확장) -->
+        <!-- 3번 탭: 오늘의 운세 -->
         <div id="tab-daily" class="tab-content">
             <header style="text-align: center; padding: 100px 0 20px 0;">
                 <h1 style="color: #f1c40f; font-size:3em;">오늘의 맞춤 운세</h1>
@@ -217,7 +298,11 @@
             document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
             document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
             document.getElementById(tabId).classList.add('active');
-            element.classList.add('active');
+            if (element) {
+                element.classList.add('active');
+            } else {
+                document.querySelector('.nav-tab').classList.add('active');
+            }
             window.scrollTo(0, 0);
         }
 
