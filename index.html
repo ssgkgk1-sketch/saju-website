@@ -108,6 +108,32 @@
             from { opacity: 0; transform: translateY(-20px); }
             to { opacity: 1; transform: translateY(0); }
         }
+
+        /* 성공 안내 페이지 스타일 */
+        #success-message {
+            display: none;
+            text-align: center;
+            padding: 60px 20px;
+            background: rgba(255,255,255,0.05);
+            border-radius: 30px;
+            border: 2px solid #f1c40f;
+            animation: fadeIn 0.8s ease;
+        }
+        .kakao-link-btn {
+            display: inline-block;
+            background: #FEE500;
+            color: #191919;
+            padding: 15px 30px;
+            border-radius: 15px;
+            font-weight: bold;
+            text-decoration: none;
+            margin: 25px 0;
+            font-size: 1.1em;
+            transition: 0.3s;
+        }
+        .kakao-link-btn:hover { transform: scale(1.05); box-shadow: 0 5px 15px rgba(254, 229, 0, 0.4); }
+
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
     </style>
 </head>
 <body>
@@ -124,7 +150,7 @@
 
     <div class="main-container">
         
-        <!-- 1번 탭: 상담하기 (모든 기존 내용 완벽 복구) -->
+        <!-- 1번 탭: 상담하기 -->
         <div id="tab-consult" class="tab-content active">
             <header>
                 <div class="header-video-container">
@@ -141,23 +167,36 @@
 
             <section id="intro">
                 <h2 style="color: #f1c40f; text-align:center; margin-top:60px;">정확한 분석을 위해 하루 단 '10명'만 상담합니다.</h2>
-                <p style="text-align:center; max-width:800px; margin:20px auto; color:#ccc; line-height:1.8;">타고난 기운을 이해하고 미래를 준비하는 것은 현명한 자의 자세입니다.<br>구름 사주는 수천 년의 지혜가 담긴 명리학을 통해 당신의 인생 나침반을 가장 정밀하게 교정해 드립니다.</p>
+                <p style="text-align:center; max-width:800px; margin:20px auto; color:#ccc; line-height:1.8;">구름 사주는 수천 년의 지혜가 담긴 명리학을 통해 당신의 인생 나침반을 가장 정밀하게 교정해 드립니다.</p>
             </section>
 
             <section id="form-section">
-                <h2 style="text-align:center; margin-bottom:30px;">사주 상담 신청</h2>
-                <div id="form-container">
+                <h2 style="text-align:center; margin-bottom:30px;">프리미엄 상담 신청</h2>
+                
+                <!-- 입력 폼 -->
+                <div id="form-container" style="max-width:600px; margin:0 auto; background:rgba(255,255,255,0.05); padding:40px; border-radius:30px;">
                     <form id="saju-form" action="https://formspree.io/f/xpqjbvny" method="POST">
-                        <div class="form-group"><label for="name">이름</label><input type="text" id="name" name="이름" required></div>
-                        <div class="form-group"><label for="gender">성별</label><select id="gender" name="성별" required><option value="">선택</option><option value="남성">남성</option><option value="여성">여성</option></select></div>
-                        <div class="form-group"><label>생년월일</label><div class="birth-group"><select name="달력종류" required><option value="양력">양력</option><option value="음력">음력</option></select><input type="number" name="생년" placeholder="예) 1990" required><input type="number" name="생월" placeholder="예) 5" required><input type="number" name="생일" placeholder="예) 15" required></div></div>
-                        <div class="form-group"><label for="age">나이 (한국 나이)</label><input type="number" id="age" name="나이 (한국)" placeholder="예) 35" required></div>
-                        <div class="form-group"><label>태어난 시간</label><div class="birth-time-group"><select id="birth-hour" name="태어난 시간 (시)" required><option value="">시</option></select><select id="birth-minute" name="태어난 시간 (분)" required><option value="">분</option></select><div class="unknown-time"><input type="checkbox" id="time-unknown" name="시간모름"><label for="time-unknown">모름</label></div></div></div>
-                        <div class="form-group"><label for="contact">연락처 (이메일 또는 전화번호)</label><input type="text" id="contact" name="연락처" required></div>
-                        <div class="form-group"><label for="question">상담받고 싶은 내용 (구체적으로)</label><textarea id="question" name="상담 내용" rows="5" required></textarea></div>
-                        <button type="submit" class="submit-btn">상담 신청하기</button>
-                        <p class="form-notice" style="color: #f1c40f; font-weight: bold;">※ 현재 신청 시 24시간 내 우선 분석 결과가 전달됩니다.</p>
+                        <div class="form-group"><label>이름</label><input type="text" name="이름" required style="width:100%; padding:12px; border-radius:10px; background:#222; color:#fff; border:1px solid #444;"></div>
+                        <div class="form-group" style="margin-top:15px;"><label>성별</label><select name="성별" required style="width:100%; padding:12px; border-radius:10px; background:#222; color:#fff; border:1px solid #444;"><option value="">선택</option><option value="남성">남성</option><option value="여성">여성</option></select></div>
+                        <div class="form-group" style="margin-top:15px;"><label>상담 내용</label><textarea name="상담 내용" rows="5" required style="width:100%; padding:12px; border-radius:10px; background:#222; color:#fff; border:1px solid #444;"></textarea></div>
+                        <button type="submit" class="submit-btn" style="width:100%; margin-top:25px; padding:18px; border-radius:15px; background:linear-gradient(45deg, #A67C52, #f1c40f); font-weight:900; cursor:pointer;">상담 신청하기</button>
                     </form>
+                </div>
+
+                <!-- 제출 성공 메시지 (수성님 요청 반영) -->
+                <div id="success-message" style="max-width:600px; margin:0 auto;">
+                    <h2 style="color: #f1c40f;">상담 요청이 완료되었습니다!</h2>
+                    <p style="font-size: 1.2em; line-height: 1.8; color: #eee; margin-top: 20px;">
+                        소중한 사주 상담을 신청해 주셔서 감사합니다.<br>
+                        아래의 <strong>오픈카톡</strong>으로 결제를 완료해 주시면,<br>
+                        확인 후 정성스러운 상담을 시작하도록 하겠습니다.
+                    </p>
+                    <a href="https://open.kakao.com/o/sgbQDnii" target="_blank" class="kakao-link-btn">
+                        <i class="fas fa-comment"></i> 오픈카톡으로 결제 및 상담 시작하기
+                    </a>
+                    <p style="color: #f1c40f; font-weight: bold; font-size: 1.1em; margin-top: 20px;">
+                        "당신에게 소중한 사주길이 되었으면 좋겠습니다."
+                    </p>
                 </div>
             </section>
 
@@ -184,7 +223,6 @@
                             <p class="original-price">15,000원</p>
                             <p class="price">5,900원</p>
                         </div>
-                        <p>전반적인 운의 흐름을 분석해 드립니다.</p>
                     </div>
                     <div class="price-card">
                         <h3>궁합 추가 상담</h3>
@@ -192,7 +230,6 @@
                             <p class="original-price">25,000원</p>
                             <p class="price">9,900원</p>
                         </div>
-                        <p>특정 인물과의 관계를 심층 분석합니다.</p>
                     </div>
                 </div>
             </section>
@@ -265,11 +302,7 @@
             document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
             document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
             document.getElementById(tabId).classList.add('active');
-            if (element) {
-                element.classList.add('active');
-            } else {
-                document.querySelector('.nav-tab').classList.add('active');
-            }
+            if (element) element.classList.add('active');
             window.scrollTo(0, 0);
         }
 
@@ -290,6 +323,25 @@
             document.getElementById('daily-result-box').style.display = 'block';
             document.getElementById('total-luck').innerText = "입력하신 " + y + "년 " + m + "월 " + d + "일의 기운을 분석한 결과, 오늘은 정적인 활동보다 동적인 활동에서 큰 이득이 있는 날입니다. 자신감을 가지고 움직이세요!";
         }
+
+        // 신청 폼 제출 후 안내 메시지 표시 로직
+        const sajuForm = document.getElementById('saju-form');
+        sajuForm.onsubmit = async (e) => {
+            e.preventDefault();
+            const formData = new FormData(sajuForm);
+            
+            // 이메일 전송 (Formspree)
+            fetch(sajuForm.action, {
+                method: 'POST',
+                body: formData,
+                headers: { 'Accept': 'application/json' }
+            });
+
+            // 화면 전환
+            document.getElementById('form-container').style.display = 'none';
+            document.getElementById('success-message').style.display = 'block';
+            window.scrollTo(0, document.getElementById('success-message').offsetTop - 100);
+        };
     </script>
     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
     <script src="script.js"></script>
